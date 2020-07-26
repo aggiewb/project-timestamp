@@ -14,16 +14,19 @@ app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
 app.use(express.static('public'));
 
 // listen for requests
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(process.env.PORT, () => {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (req, res) {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/api/hello", function (req, res) {
+app.get('/api/hello', (req, res) => {
   res.json({greeting: 'hello API'});
 });
 
+app.get('/api/timestamp/:date_string', (req, res) => {
+
+});
