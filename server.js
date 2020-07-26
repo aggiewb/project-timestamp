@@ -27,6 +27,7 @@ app.get('/api/hello', (req, res) => {
   res.json({greeting: 'hello API'});
 });
 
-app.get('/api/timestamp/:date_string', (req, res) => {
-
+//? indicates optional string pattern
+app.get('/api/timestamp/:date_string?', (req, res) => {
+  const date_string = req.params.date_string;
 });
