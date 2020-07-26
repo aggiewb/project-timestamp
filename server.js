@@ -38,5 +38,8 @@ app.get('/api/timestamp/:date_string?', (req, res) => {
   } else if(!isNaN(dateString)){
     const validDate = new Date(parseInt(dateString));
     res.json({'unix': validDate.getTime(), 'utc': validDate.toUTCString()});
-  } 
+  } else if(isNaN(dateString)){
+    const validDate = new Date(dateString);
+    res.json({'unix': validDate.getTime(), 'utc': validDate.toUTCString()});
+  }
 });
