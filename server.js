@@ -29,9 +29,13 @@ app.get('/api/hello', (req, res) => {
 
 //? indicates optional string pattern
 app.get('/api/timestamp/:date_string?', (req, res) => {
-  const date_string = req.params.date_string;
-  if(!date_string){
-    const date = new Date();
-    res.json({'unix': date.getTime(), 'utc': date.toUTCString()});
+  const dateString = req.params.date_string;
+  let date;
+
+  if(!dateString){
+    date = new Date();
+  } else {
+    date = new Date(isNaN(dateString) ? dateString : parseInt(dateString));
   }
+  res.json({unix: date.getTime(), utc: date.toUTCString()});
 });
